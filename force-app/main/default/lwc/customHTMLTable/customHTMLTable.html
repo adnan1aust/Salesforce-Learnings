@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Custom Table" icon-name="custom:custom57">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-is-resizable slds-is-sortable slds-border_right" scope="col">
+                        <a  class="slds-text-link_reset" href="#" name="Test Heder2" onclick={handleClick}>
+                            Test Heder2
+                        </a>
+                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                            <template if:true={asc}>
+                                <lightning-icon icon-name="utility:arrowdown" alternative-text="arrowdown!" title="arrowdown" size="xx-small"></lightning-icon>
+                            </template>
+                            <template if:false={asc}>
+                                <lightning-icon icon-name="utility:arrowup" alternative-text="arrowup!" title="arrowup" size="xx-small"></lightning-icon>
+                            </template>
+                        </span>
+                    </th>
+                    <th class="slds-is-resizable slds-is-sortable slds-border_right" scope="col">
+                        <a  class="slds-text-link_reset" href="#" name="Test Heder2" onclick={handleClick}>
+                            Test Heder2
+                        </a>
+                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                            <template if:true={asc}>
+                                <lightning-icon icon-name="utility:arrowdown" alternative-text="arrowdown!" title="arrowdown" size="xx-small"></lightning-icon>
+                            </template>
+                            <template if:false={asc}>
+                                <lightning-icon icon-name="utility:arrowup" alternative-text="arrowup!" title="arrowup" size="xx-small"></lightning-icon>
+                            </template>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </lightning-card>
+</template>
