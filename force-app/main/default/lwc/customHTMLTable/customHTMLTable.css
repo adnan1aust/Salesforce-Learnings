@@ -1,5 +1,8 @@
-.th__action {
-    padding: 0.25rem 0.5rem;
-    height: 2rem;
-    align-items: center;
+.header-icon {
+    margin-left: 0.25rem;
+}
+
+.table-container{
+    height: 450px;
+    overflow: auto;
 }
