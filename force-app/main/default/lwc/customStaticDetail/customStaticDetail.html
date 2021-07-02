@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title='' icon-name=''>
+        <lightning-layout>
+            <lightning-layout-item flexibility='auto'>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility='auto, no-grow'>
+                <lightning-button-group>
+                    <lightning-button label='TestScreen' variant='neutral' name='TestScreen' onclick={redirectToScreen}></lightning-button>
+                    <lightning-button label='TestScreen1' variant='neutral' name='TestScreen1' onclick={redirectToScreen}></lightning-button>
+                    <lightning-button label='TestScreen2' variant='neutral' name='TestScreen2' onclick={redirectToScreen}></lightning-button>
+                    <lightning-button label='TestScreen3' variant='neutral' name='TestScreen3' onclick={redirectToScreen}></lightning-button>
+                </lightning-button-group>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-record-view-form
+        record-id={recordId}
+        object-api-name="Account">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" class="slds-form__item">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_horizontal slds-form-element_1-col">
+                        <lightning-output-field field-name={name}>
+                        </lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" class="slds-form__item">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_horizontal slds-form-element_1-col">
+                        <lightning-output-field field-name={address}>
+                        </lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" class="slds-form__item">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_horizontal">
+                        <lightning-output-field field-name={email}>
+                        </lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" class="slds-form__item">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_horizontal">
+                        <lightning-output-field field-name={phone}>
+                        </lightning-output-field>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>
