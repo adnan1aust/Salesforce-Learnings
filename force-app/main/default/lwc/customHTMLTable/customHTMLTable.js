@@ -1,6 +1,6 @@
 import {LightningElement,wire, track} from 'lwc';
 import accs from '@salesforce/apex/GenericController.returnAccs';
-
+import getColor from '@salesforce/apex/GenericController.getColor';
 export default class CustomHTMLTable extends LightningElement {
     @track sortObjcet = {
         Name: true,
@@ -15,14 +15,26 @@ export default class CustomHTMLTable extends LightningElement {
     currentSortAttribute = 'Name';
     newSortAttribute;
     accounts = [];
+    color;
     @wire(accs)
     acc({error, data}) {
         if (data) {
             this.accounts = data;
         } else if (error) {
-            this.error = error;
-            console.log('error ===> ' + JSON.stringify(error));
+            console.error('error', error);
         }
+    }
+
+    gettColor() {
+        getColor({
+        })
+        .then((data) => {
+            this.color = data;
+            console.log(data)
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+        })
     }
     handleClick(event) {
         this.newSortAttribute = event.currentTarget.dataset.id;
@@ -35,5 +47,17 @@ export default class CustomHTMLTable extends LightningElement {
             this.asc = !this.asc;
         }
         console.log(event.currentTarget.dataset.id);
+    }
+    renderedCallback() {
+        console.log('Calling')
+        getColor({
+        })
+        .then((data) => {
+            this.template.querySelector("table").style.setProperty("--td-background", data);
+            console.log(data)
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+        })
     }
 }

@@ -6,3 +6,7 @@
     height: 450px;
     overflow: auto;
 }
+
+.variable-background {
+    background-color: var(--td-background);
+}
