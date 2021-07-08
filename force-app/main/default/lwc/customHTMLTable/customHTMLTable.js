@@ -49,6 +49,7 @@ export default class CustomHTMLTable extends LightningElement {
         console.log(event.currentTarget.dataset.id);
     }
     renderedCallback() {
+        /*
         console.log('Calling')
         getColor({
         })
@@ -59,5 +60,6 @@ export default class CustomHTMLTable extends LightningElement {
         .catch((error) => {
             console.log('error: ', error);
         })
+        */
     }
 }
