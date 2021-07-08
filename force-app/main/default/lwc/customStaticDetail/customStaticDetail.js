@@ -3,9 +3,11 @@ import { getRecord } from 'lightning/uiRecordApi';
 import { NavigationMixin } from 'lightning/navigation';
 
 import NAME_FIELD from '@salesforce/schema/Account.Name';
-import ADDRESS_FIELD from '@salesforce/schema/Account.Address';
-import EMAIL_FIELD from '@salesforce/schema/Account.Email';
+import ADDRESS_FIELD from '@salesforce/schema/Account.BillingAddress';
+import WEBSITE_FIELD from '@salesforce/schema/Account.Website';
 import PHONE_FIELD from '@salesforce/schema/Account.Phone';
+
+import { showAlert } from 'c/commonFunctionalityJS';
 
 
 const FIELDS = [NAME_FIELD];
@@ -13,13 +15,13 @@ const FIELDS = [NAME_FIELD];
 export default class CustomStaticDetail extends NavigationMixin(LightningElement) {
     name = NAME_FIELD;
     address = ADDRESS_FIELD;
-    email = EMAIL_FIELD;
+    website = WEBSITE_FIELD;
     phone = PHONE_FIELD;
 
     name;
     @api recordId;
 
-    @wire(getRecord, { recordId: '$recordId', FIELDS })
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     initData({ error, data }) {
         if (data) {
             this.name = data.fields.Name.value;
@@ -31,7 +33,16 @@ export default class CustomStaticDetail extends NavigationMixin(LightningElement
 
     redirectToScreen(event) {
         if (event.target.name === 'TestScreen') {
+            /*Code to copy to clipboard */
+            let url = 'www.google.com';
+            let placeHolder = document.createElement('textarea');
+            document.body.appendChild(placeHolder);
+            placeHolder.value = url;
+            placeHolder.select();
+            document.execCommand('copy');
+            document.body.removeChild(placeHolder);
 
+            this.showNotification();
         } else if (event.target.name === 'TestScreen1') {
             let urlParam = {
                 c__name: this.name
@@ -67,6 +78,10 @@ export default class CustomStaticDetail extends NavigationMixin(LightningElement
         }).then(url => {
             window.open(url, "_blank");
         });
+    }
+
+    showNotification() {
+        showAlert('', 'Your link has been copied', 'success', this);
     }
 
 }
