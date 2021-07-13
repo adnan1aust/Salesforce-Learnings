@@ -1,0 +1,30 @@
+<template>
+    <lightning-layout>
+
+        <lightning-layout-item flexibility="auto, no-grow" class="slds-m-top_large">
+            <div>
+                <lightning-button-icon icon-name={iconName}  size="small"
+                alternative-text="View More" class="" onclick={toggleSearchFilterFormVisibility}></lightning-button-icon>
+            </div>
+        </lightning-layout-item>
+
+        <lightning-layout-item flexibility="auto" class="slds-m-bottom_large slds-m-left_small">
+            <template if:true={showFreeInput}>
+                <lightning-input label="" value={searchParam} type = "search" onkeypress={handleKeyPress}
+                ></lightning-input>
+            </template>
+        </lightning-layout-item>
+
+        <lightning-layout-item flexibility="auto, no-grow" class="slds-m-top_medium slds-m-left_small">
+            <lightning-button class="slds-m-top_small"
+            variant="brand"
+            name="search"
+            label={searchBtnText}
+            onclick={handleSearch}
+            onkeypress={handleKeyPress}
+            >
+            </lightning-button>
+        </lightning-layout-item>
+
+    </lightning-layout>
+</template>
