@@ -1,0 +1,45 @@
+<template>
+
+    <lightning-layout multiple-rows class="commonFilterInput">
+        <template for:each={filterInputFields} for:item="inputField">
+
+            <template if:true={inputField.lightningInput}>
+                <lightning-layout-item key={inputField.label} class={inputField.layoutClass} size={inputField.size}>
+                    <lightning-input type={inputField.type} class={inputField.inputClass} label={inputField.label} name={inputField.name}
+                    maxlength={inputField.maxlength}  onkeypress={handleKeyPress}></lightning-input>
+                </lightning-layout-item>
+            </template>
+
+            <template if:true={inputField.lightningCombobox}>
+                <lightning-layout-item key={inputField.label} class={inputField.layoutClass} size={inputField.size}>
+                    <lightning-combobox label={inputField.label} class={inputField.inputClass}  options={inputField.options} name={inputField.name} placeholder="-">
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </template>
+
+            <template if:true={inputField.emptyDiv}>
+                <lightning-layout-item key={inputField.label} class={inputField.layoutClass} size={inputField.size}>
+
+                </lightning-layout-item>
+            </template>
+
+            <template if:true={inputField.lightningCheckboxGroup}>
+                <lightning-layout-item key={inputField.label} class={inputField.layoutClass} size={inputField.size}>
+                    <div class="slds-form-element__label slds-no-flex">{inputField.label}</div>
+                    <lightning-checkbox-group label=''  options={inputField.options} name={inputField.name} class={inputField.inputClass} value=''>
+                    </lightning-checkbox-group>
+                </lightning-layout-item>
+            </template>
+
+            <template if:true={inputField.dateTime}>
+                <lightning-layout-item key={inputField.label} class={inputField.layoutClass} size={inputField.size}>
+                    <div class="slds-form-element__label slds-no-flex">{inputField.label}</div>
+                    <lightning-input type={inputField.type} class={inputField.inputClass} label='' name={inputField.name} timezone={inputField.timezone}
+                    ></lightning-input>
+                </lightning-layout-item>
+            </template>
+
+        </template>
+    </lightning-layout>
+
+</template>
