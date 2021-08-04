@@ -1,0 +1,13 @@
+lightning-card {
+    margin: var(--card-margin);
+}
+
+.dataTable{
+    height:var(--table-height);
+}
+
+.dataTableLazyLoader {
+    position: relative;
+    height: 20px;
+    margin-top: -20px;
+}

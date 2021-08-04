@@ -1,0 +1,91 @@
+<template>
+    <div class="slds-m-top_small">
+        <template if:true={isCardHidden}>
+            <div class='dataTable'>
+                <lightning-datatable
+                key-field="Id"
+                data={visibleRecords}
+                columns={tableColumns}
+                sorted-by={sortBy}
+                sorted-direction={sortDirection}
+                onsort={doSort}
+                hide-checkbox-column={doHideCheckBoxColumn}
+                show-row-number-column={doShowRowNumberColumn}
+                enable-infinite-loading={doEnableInfiniteLoading}
+                onloadmore={loadMoreData}
+                load-more-offset='0'
+                onrowaction={handleRowActions}
+                onrowselection={getSelecteRowData}
+                selected-rows={selectedRows}
+                >
+                </lightning-datatable>
+            </div>
+
+            <template if:true={showSpinner}>
+
+                <lightning-spinner variant="brand"
+                    alternative-text="Loading Data"
+                    size="medium">
+                </lightning-spinner>
+
+            </template>
+
+            <template if:true={lazyLoading}>
+
+                <div class="dataTableLazyLoader">
+                    <lightning-spinner variant="brand"
+                        alternative-text="Loading Data"
+                        size="small">
+                    </lightning-spinner>
+                </div>
+
+            </template>
+        </template>
+
+        <template if:false={isCardHidden}>
+            <lightning-card title={title} icon-name={iconName}>
+                <div class='dataTable'>
+                    <lightning-datatable
+                    key-field="Id"
+                    data={visibleRecords}
+                    columns={tableColumns}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={doSort}
+                    hide-checkbox-column={doHideCheckBoxColumn}
+                    show-row-number-column={doShowRowNumberColumn}
+                    enable-infinite-loading={doEnableInfiniteLoading}
+                    onloadmore={loadMoreData}
+                    load-more-offset='0'
+                    onrowaction={handleRowActions}
+                    onrowselection={getSelecteRowData}
+                    selected-rows={selectedRows}
+                    >
+                    </lightning-datatable>
+                </div>
+
+                <template if:true={showSpinner}>
+
+                    <lightning-spinner variant="brand"
+                        alternative-text="Loading Data"
+                        size="medium">
+                    </lightning-spinner>
+
+                </template>
+
+                <template if:true={lazyLoading}>
+
+                    <div class="dataTableLazyLoader">
+                        <lightning-spinner variant="brand"
+                            alternative-text="Loading Data"
+                            size="small">
+                        </lightning-spinner>
+                    </div>
+
+                </template>
+
+            </lightning-card>
+        </template>
+
+    </div>
+</template>
